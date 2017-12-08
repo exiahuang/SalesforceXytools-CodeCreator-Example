@@ -27,5 +27,5 @@ https://ap4.salesforce.com/apex/AccountEdit?id=001XXXXXXXXXXXX
 ![salesforcexytools-codecretor (4).png](pic/salesforcexytools-codecretor(4).png)
 
 ## visualforce list page
-https://c.cs6.visual.force.com/apex/AccountList?id=001XXXXXXXXXXXX
+https://c.cs6.visual.force.com/apex/AccountList
 ![salesforcexytools-codecretor (5).png](pic/salesforcexytools-codecretor(5).png)
