@@ -1,0 +1,27 @@
+<apex:page standardController="Account" >
+    <apex:form >
+        <apex:sectionHeader title="Account" />
+        <apex:pageBlock title="Account" mode="edit">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" title="Account">
+                <!-- 取引先 ID -->
+                <apex:outputField value="{!Account.Id}" />
+                <!-- 取引先名 -->
+                <apex:outputField value="{!Account.Name}" />
+                <!-- 町名・番地(請求先) -->
+                <apex:outputField value="{!Account.BillingStreet}" />
+                <!-- 市区郡(請求先) -->
+                <apex:outputField value="{!Account.BillingCity}" />
+                <!-- 都道府県(請求先) -->
+                <apex:outputField value="{!Account.BillingState}" />
+                <!-- 郵便番号(請求先) -->
+                <apex:outputField value="{!Account.BillingPostalCode}" />
+                <!-- 国(請求先) -->
+                <apex:outputField value="{!Account.BillingCountry}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

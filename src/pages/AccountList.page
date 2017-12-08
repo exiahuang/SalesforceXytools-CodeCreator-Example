@@ -1,0 +1,88 @@
+<!--*****************************************************************************************************
+* @author      : SalesforceXytools
+* @date        : 2017/12/08
+* @description : Account List Search Page
+******************************************************************************************************-->
+<apex:page showHeader="true" sidebar="false" controller="AccountListController" readOnly="true" id="page">
+    <apex:form id="form">
+        <!--To display page messages -->
+        <apex:pageMessages id="messages"/>
+        <apex:pageBlock id="searchBlock">
+            <apex:pageBlockButtons location="bottom" id="searchBlockButtons">
+                <apex:commandButton value=" Search " title=" Search " action="{!doSearch}" reRender="form" id="searchBtn" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" title="Search Filter" id="searchBlockSection">
+                <!-- 取引先 ID -->
+                <apex:inputField value="{!searchAccount.Id}"/>
+                <!-- 取引先名 -->
+                <apex:inputField value="{!searchAccount.Name}"/>
+                <!-- レコードタイプ ID -->
+                <!-- <apex:inputField value="{!searchAccount.RecordTypeId}"/> -->
+                <!-- 町名・番地(請求先) -->
+                <apex:inputField value="{!searchAccount.BillingStreet}"/>
+                <!-- 市区郡(請求先) -->
+                <apex:inputField value="{!searchAccount.BillingCity}"/>
+                <!-- 都道府県(請求先) -->
+                <apex:inputField value="{!searchAccount.BillingState}"/>
+                <!-- 郵便番号(請求先) -->
+                <apex:inputField value="{!searchAccount.BillingPostalCode}"/>
+                <!-- 国(請求先) -->
+                <apex:inputField value="{!searchAccount.BillingCountry}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="Account Pagination" mode="edit" id="pageBlock">
+            <apex:pageBlockSection title="AccountList" columns="1">
+                <!-- Action status to display when data is loading -->
+                <apex:actionStatus id="loading">
+                    <apex:facet name="start">
+                        <p>Searching....</p>
+                    </apex:facet>
+                </apex:actionStatus>
+                <!-- Page block table to display Account records -->
+                <apex:pageBlockTable value="{!AccountList}" var="account" id="resultPanel">
+                <!-- 取引先 ID -->
+                <apex:column headerValue="取引先 ID">
+                    <apex:outputField value="{!account.Id}"/>
+                </apex:column>
+                <!-- 取引先名 -->
+                <apex:column headerValue="取引先名">
+                    <apex:outputField value="{!account.Name}"/>
+                </apex:column>
+                <!-- レコードタイプ ID -->
+                <!-- <apex:column headerValue="レコードタイプ ID">
+                    <apex:outputField value="{!account.RecordTypeId}"/>
+                </apex:column> -->
+                <!-- 町名・番地(請求先) -->
+                <apex:column headerValue="町名・番地(請求先)">
+                    <apex:outputField value="{!account.BillingStreet}"/>
+                </apex:column>
+                <!-- 市区郡(請求先) -->
+                <apex:column headerValue="市区郡(請求先)">
+                    <apex:outputField value="{!account.BillingCity}"/>
+                </apex:column>
+                <!-- 都道府県(請求先) -->
+                <apex:column headerValue="都道府県(請求先)">
+                    <apex:outputField value="{!account.BillingState}"/>
+                </apex:column>
+                <!-- 郵便番号(請求先) -->
+                <apex:column headerValue="郵便番号(請求先)">
+                    <apex:outputField value="{!account.BillingPostalCode}"/>
+                </apex:column>
+                <!-- 国(請求先) -->
+                <apex:column headerValue="国(請求先)">
+                    <apex:outputField value="{!account.BillingCountry}"/>
+                </apex:column>
+                </apex:pageBlockTable>
+                <apex:outputPanel layout="block" id="buttonPanel" styleClass="pageButtonAlign">
+                    <apex:commandButton action="{!first}" disabled="{!NOT(hasPrevious)}" value="|< First" rerender="resultPanel,buttonPanel,messages" status="loading"/>
+                    <apex:commandButton action="{!previous}" disabled="{!NOT(hasPrevious)}" value="< Previous" rerender="resultPanel,buttonPanel,messages" status="loading"/>
+                    <apex:outputText >
+                        &nbsp;page {!IF(pageCount=0, 0, pageNumber)} of {!pageCount}&nbsp;
+                    </apex:outputText>
+                    <apex:commandButton action="{!next}" disabled="{!NOT(hasNext)}" value="Next >" rerender="resultPanel,buttonPanel,messages" status="loading"/>
+                    <apex:commandButton action="{!last}" disabled="{!NOT(hasNext)}" value="Last >|" rerender="resultPanel,buttonPanel,messages" status="loading"/>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

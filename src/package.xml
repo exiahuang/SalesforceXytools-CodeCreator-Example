@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>AccountDao</members>
+        <members>AccountDto</members>
+        <members>AccountListController</members>
+        <members>XyStandardListController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>AccountEdit</members>
+        <members>AccountList</members>
+        <members>AccountView</members>
+        <name>ApexPage</name>
+    </types>
+    <version>40.0</version>
+</Package>
